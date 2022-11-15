@@ -5,7 +5,9 @@ import Gestion as gd
 
 
 
-st.markdown('Gestión Kurt **_Diciembre_ 2022**.')
+st.write('''
+# Gestión Kurt Dic 22
+''')
 
 st.text_input("Ingresa tu Nombre", key="name")
 
