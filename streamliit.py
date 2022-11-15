@@ -3,6 +3,10 @@ import numpy as np
 import pandas as pd
 import Gestion as gd
 
+
+
+st.markdown('Gestión Kurt **_Diciembre_ 2022**.')
+
 st.text_input("Ingresa tu Nombre", key="name")
 
 # You can access the value at any point with:
