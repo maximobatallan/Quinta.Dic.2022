@@ -1,15 +1,33 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import Gestion as gd
-
-
+import csv
 
 st.write('''
-# `Gestión Kurt Dic 22`
+## `Gestión Kurt Dic 22`
 ''')
 
-st.text_input("Ingresa tu Nombre", key="name")
+huesped = pd.read_csv('huespedes.csv')
+
+col_list = huesped[huesped.columns[0]].values.tolist()
+
+
+tupla = tuple(col_list)
+
+option = st.selectbox(
+    'Ingresa tu Nombre:',
+   tupla, key="name")
+
+if st.checkbox('¡No encuentro mi nombre!'):
+    st.text_input("Ingresa tu nombre", key="name")
+    nombre = st.session_state.name
+    
+    
+
+  
+   
+
+
 
 # You can access the value at any point with:
 
@@ -31,7 +49,6 @@ precio = st.session_state.precio
 
 
 
-
 dataframe = pd.read_csv('Quinta.csv')
 
 
@@ -47,29 +64,34 @@ if st.checkbox('Actualizar Tabla'):
 if st.button('Guardar'):
     
     try:
-        #nombreconvert= str()
-        #descripcovert=
+    
         precioconvert = int(precio)
         if nombre == "":
             st.write('¡Seleccione su Nombre!')
             pass
         else:
-            if descripcion == "":
-                st.write('¡Seleccione el tipo de Gasto!')
+            if nombre == "Seleccione un nombre":
+                st.write('¡Seleccione su Nombre!')
                 pass
             else:
-                if precio == "":
-                    st.write('¡Ingrese el precio del gasto!')
+                if descripcion == "":
+                    st.write('¡Seleccione el tipo de Gasto!')
                     pass
                 else:
-                        print(nombre)
-                        p = gd.Person(nombre, descripcion, precioconvert)
-                        p.say_hi()
+                    if precio == "":
+                        st.write('¡Ingrese el precio del gasto!')
+                        pass
+                    else:
+                            
+                            p = gd.Person(nombre, descripcion, precioconvert)
+                            p.say_hi()
 
 
-        
+            
 
         
 
     except ValueError:
         st.write('El precio debe ser un numero entero')
+
+

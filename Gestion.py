@@ -2,9 +2,7 @@ import pandas as pd
 import csv 
 from datetime import datetime
 
-lista = ['mica', 'simik', 'pablo']
 
-df= pd.read_csv('Quinta.csv',sep=',')
 
 
 
@@ -28,8 +26,16 @@ class Person:
         with open('Quinta.csv', 'a') as f:
             writer = csv.writer(f)
             writer.writerow(list)
-
-
+        
+        with open('huespedes.csv', 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow([self.name])
+            f.close
+        df = pd.read_csv("huespedes.csv")
+        print(df)
+        df = df.drop_duplicates()
+        print(df)
+        df.to_csv('huespedes.csv', index=False)
 
 
 
