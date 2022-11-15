@@ -19,19 +19,26 @@ option = st.selectbox(
    tupla, key="name")
 
 if st.checkbox('¡No encuentro mi nombre!'):
-    st.text_input("Ingresa tu nombre", key="name")
-    nombre = st.session_state.name
+    st.text_input("Ingresa tu nombre", key="name1")
+    nombre1 = st.session_state.name1
     
     
 
-  
+
    
 
 
 
 # You can access the value at any point with:
 
-nombre = st.session_state.name
+
+
+
+
+try:
+    nombre = st.session_state.name1
+except:
+    nombre = st.session_state.name
 
 st.text_input("Descripcion", key="descripcion")
 
