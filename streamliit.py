@@ -6,7 +6,7 @@ import Gestion as gd
 
 
 st.write('''
-# Gestión Kurt Dic 22
+# Gestión `Kurt Dic 22`
 ''')
 
 st.text_input("Ingresa tu Nombre", key="name")
