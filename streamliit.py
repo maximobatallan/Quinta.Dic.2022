@@ -4,7 +4,7 @@ import Gestion as gd
 import csv
 
 st.write('''
-## `Gestión Kurt Dic 22`
+## `Gestión Quinta Dic 22`
 ''')
 
 huesped = pd.read_csv('huespedes.csv')
