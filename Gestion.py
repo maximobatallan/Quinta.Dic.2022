@@ -32,9 +32,9 @@ class Person:
             writer.writerow([self.name])
             f.close
         df = pd.read_csv("huespedes.csv")
-        print(df)
-        df = df.drop_duplicates()
-        print(df)
+        
+        df = df.drop_duplicates(subset=['Nombre'])
+        
         df.to_csv('huespedes.csv', index=False)
 
 

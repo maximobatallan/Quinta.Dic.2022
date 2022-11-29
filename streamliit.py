@@ -1,104 +1,28 @@
 import streamlit as st
-import pandas as pd
-import Gestion as gd
-import csv
+from streamlit_option_menu import option_menu
+import Gastos as gd
+import Estadia as es
+import Resumen as re
+import Contabilidad as co
 
 st.write('''
-## `Gestión Quinta Dic 22`
+## `Gestión Kurt Dic 22`
 ''')
-
-huesped = pd.read_csv('huespedes.csv')
-
-col_list = huesped[huesped.columns[0]].values.tolist()
+st.markdown("<h4 style='text-align: justify;'>Carga de Compras, en el 2do la estadia de cada uno, el 3ro veras si debes poner o recibir plata y el 4to es solo para el dto. contable donde imputa el precio de lo consumido en el dia.</h1>", unsafe_allow_html=True)
 
 
-tupla = tuple(col_list)
+selected = option_menu(None, ["Gastos", "Estadia", "Resumen", 'Dto. Contable'],
+icons=['cash', 'cloud-upload', "list-task", 'gear'],
+menu_icon="cast", default_index=0, orientation="horizontal")
 
-option = st.selectbox(
-    'Ingresa tu Nombre:',
-   tupla, key="name")
-
-if st.checkbox('¡No encuentro mi nombre!'):
-    st.text_input("Ingresa tu nombre", key="name1")
-    nombre1 = st.session_state.name1
+if selected == "Gastos":
+    gd.gastos()
     
-    
-
-
+if selected == "Estadia":
+    es.estadia()
    
+if selected == "Resumen":
+    re.resumen()
 
-
-
-# You can access the value at any point with:
-
-
-
-
-
-try:
-    nombre = st.session_state.name1
-except:
-    nombre = st.session_state.name
-
-st.text_input("Descripcion", key="descripcion")
-
-# You can access the value at any point with:
-
-descripcion = st.session_state.descripcion
-
-st.text_input("Precio", key="precio")
-
-# You can access the value at any point with:
-
-precio = st.session_state.precio
-
-
-
-
-
-dataframe = pd.read_csv('Quinta.csv')
-
-
-
-st.dataframe(dataframe)
-
-if st.checkbox('Actualizar Tabla'):
-   pass
-
-
-
-
-if st.button('Guardar'):
-    
-    try:
-    
-        precioconvert = int(precio)
-        if nombre == "":
-            st.write('¡Seleccione su Nombre!')
-            pass
-        else:
-            if nombre == "Seleccione un nombre":
-                st.write('¡Seleccione su Nombre!')
-                pass
-            else:
-                if descripcion == "":
-                    st.write('¡Seleccione el tipo de Gasto!')
-                    pass
-                else:
-                    if precio == "":
-                        st.write('¡Ingrese el precio del gasto!')
-                        pass
-                    else:
-                            
-                            p = gd.Person(nombre, descripcion, precioconvert)
-                            p.say_hi()
-
-
-            
-
-        
-
-    except ValueError:
-        st.write('El precio debe ser un numero entero')
-
-
+if selected == "Dto. Contable":
+    co.contabilidad()
