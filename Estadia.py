@@ -80,39 +80,27 @@ def estadia():
             
             if st.button('Guardar'):
                 if miercoles == True:
-
                     df.loc[df['Nombre'] == nombre, 'Miercoles'] = 'Si'
+                else:
+                    df.loc[df['Nombre'] == nombre, 'Miercoles'] = 'No'
                 if jueves == True:
-
                     df.loc[df['Nombre'] == nombre, 'Jueves'] = 'Si'
-                
-                
+                else:
+                    df.loc[df['Nombre'] == nombre, 'Jueves'] = 'No'
                 if viernes == True:
                     df.loc[df['Nombre'] == nombre, 'Viernes'] = 'Si'
-                    
+                else:
+                    df.loc[df['Nombre'] == nombre, 'Viernes'] = 'No'    
                 if sabado == True:
                     df.loc[df['Nombre'] == nombre, 'Sabado'] = 'Si'
+                else:
+                    df.loc[df['Nombre'] == nombre, 'Sabado'] = 'No'               
                 if domingo == True:
                     df.loc[df['Nombre'] == nombre, 'Domingo'] = 'Si'
-                    
+                else:
+                    df.loc[df['Nombre'] == nombre, 'Domingo'] = 'No'
 
-                    
-
-
-
-                df1 = df[df['Nombre'] == nombre]
+                
                 df.to_csv('huespedes.csv',index=False)
-
+                df1 = df[df['Nombre'] == nombre]
                 st.dataframe(df1)
-
-
-
-
-
-
-
-
-
-
-
-
